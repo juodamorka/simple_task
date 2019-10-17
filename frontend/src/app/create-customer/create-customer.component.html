@@ -1,0 +1,58 @@
+<h3>Create Customer</h3>
+<div style="width: 400px;">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" formControlName="name" class="form-control" id="name" [(ngModel)]="customer.name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" name="name">
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Name is required</div>
+        <div *ngIf="f.name.errors.minLength">Name cannot be less than 2 characters</div>
+        <div *ngIf="f.name.errors.pattern">Name contains illegal characters</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="surname">Surname</label>
+      <input type="text" formControlName="surname" class="form-control" id="surname" [(ngModel)]="customer.surname" [ngClass]="{ 'is-invalid': submitted && f.surname.errors }" name="surname">
+      <div *ngIf="submitted && f.surname.errors" class="invalid-feedback">
+        <div *ngIf="f.surname.errors.required">Surname is required</div>
+        <div *ngIf="f.surname.errors.minLength">Surname cannot be less than 2 characters</div>
+        <div *ngIf="f.surname.errors.pattern">Surname contains illegal characters</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="birthDate">Birth date (yyyy-MM-dd)</label>
+      <input type="text" formControlName="birthDate" class="form-control" id="birthDate" [(ngModel)]="customer.birthDate" [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }" name="birthDate">
+      <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
+        <div *ngIf="f.birthDate.errors.required">Birth date is required</div>
+        <div *ngIf="f.birthDate.errors.pattern">Birth date should look like this: yyyy-MM-dd</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">Telephone number</label>
+      <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber" [(ngModel)]="customer.phoneNumber" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" name="phoneNumber">
+      <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+        <div *ngIf="f.phoneNumber.errors.required">Telephone number is required</div>
+        <div *ngIf="f.phoneNumber.errors.pattern">Telephone number does not match the pattern</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input type="text" formControlName="email" class="form-control" id="email" [(ngModel)]="customer.email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" name="email">
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">E-mail is required</div>
+        <div *ngIf="f.email.errors.email">E-mail must be a valid email address</div>
+        <div *ngIf="f.email.errors.pattern">E-mail address does not match the pattern</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<!--<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+</div>-->
